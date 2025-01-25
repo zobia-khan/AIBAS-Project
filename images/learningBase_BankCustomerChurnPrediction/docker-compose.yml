@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  learning_Base:
+    image: uafridi/learningBase_BankCustomerChurnPrediction
+    volumes:
+      - ai_system:/tmp/learningBase
+
+volumes:
+  ai_system:
