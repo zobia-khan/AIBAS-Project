@@ -46,15 +46,40 @@ else:
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, OrdinalEncoder, OneHotEncoder
 import os
 
 # Ensure the directory exists
-output_dir = 'data/customer_churn_dataset'
+output_dir = '../../data/customer_churn_dataset'
 os.makedirs(output_dir, exist_ok=True)
 
 # Assume df is your DataFrame loaded from an earlier step
 # Example placeholder: df = pd.read_csv('your_data.csv')
+
+# Drop unnecessary columns
+df.drop(['Surname', 'RowNumber', 'CustomerId'], axis=1, inplace=True)
+
+# Check and handle missing or invalid values in 'Card Type'
+df['Card Type'].replace('', np.nan, inplace=True)
+df.dropna(subset=['Card Type'], inplace=True)
+valid_categories = ["SILVER", "GOLD", "PLATINUM", "DIAMOND"]
+df = df[df['Card Type'].isin(valid_categories)]
+
+# Encode 'Card Type' using Ordinal Encoding
+df['Card Type'] = OrdinalEncoder(
+    categories=[valid_categories],
+    dtype=int
+).fit_transform(df[['Card Type']])
+
+# One-Hot Encode 'Geography'
+ohe = OneHotEncoder(sparse_output=False, dtype=int)
+encoded = ohe.fit_transform(df[['Geography']])
+encoded = pd.DataFrame(encoded, columns=ohe.get_feature_names_out())
+df = pd.concat([df, encoded], axis=1)
+df.drop(['Geography'], axis=1, inplace=True)
+
+# Replace 'Gender' values with numeric equivalents
+df.replace({'Female': 0, 'Male': 1}, inplace=True)
 
 # Step 1: Convert relevant columns to numeric
 numeric_columns = ['CreditScore', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 
