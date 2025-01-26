@@ -1,0 +1,5 @@
+epochs: 20
+final_loss: 0.02705330401659012
+final_accuracy: 0.9932762980461121
+final_val_loss: 0.04524543508887291
+final_val_accuracy: 0.992682933807373
