@@ -1,10 +1,11 @@
 version: '3.9'
 
 services:
-  activationBase:
-    image: uafridi/activationBase_BankCustomerChurnPrediction
+  activation_base:
+    #build: .
+    image: uafridi/activationbase_bankcustomerchurnprediction
     volumes:
-      - ai_system:/tmp/activationBase
+      - ai_system:/tmp
 
 volumes:
   ai_system:
