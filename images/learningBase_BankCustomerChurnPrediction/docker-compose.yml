@@ -1,10 +1,17 @@
 version: '3.9'
 
 services:
-  learning_Base:
-    image: uafridi/learningBase_BankCustomerChurnPrediction
+  learning_base:
+    #build: .
+    image: uafridi/learningbase_bankcustomerchurnprediction
     volumes:
-      - ai_system:/tmp/learningBase
+      - ai_system:/tmp
+    #command:
+    #- sh
+    #- "-c"
+    #- |
+    #  rm -rf /tmp/learningBase/ && cp -r /learningBase/ /tmp/
 
 volumes:
   ai_system:
+      external: true

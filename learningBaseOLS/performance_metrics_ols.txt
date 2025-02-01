@@ -1,0 +1,4 @@
+Training Data RMSE: 0.0645
+Training Data R²: 0.9740
+Validation Data RMSE: 0.0850
+Validation Data R²: 0.9597
