@@ -14,6 +14,7 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, r2_score
 from UE_04_LinearRegDiagnostic import LinearRegDiagnostic
+import scipy.stats as stats
 
 def load_and_preprocess_data(train_file, test_file, target_column):
     """
@@ -63,26 +64,7 @@ def diagnostic_plots_ols(model, path):
     """
     Generate and save diagnostic plots (Residuals and QQ Plot).
     """
-    # residuals = model.resid
-
-    # plt.figure(figsize=(12, 5))
-
-    # # Residuals Plot
-    # plt.subplot(1, 2, 1)
-    # plt.scatter(model.fittedvalues, residuals, alpha=0.5)
-    # plt.axhline(y=0, color='r', linestyle='--')
-    # plt.xlabel('Fitted Values')
-    # plt.ylabel('Residuals')
-    # plt.title('Residuals vs Fitted')
-
-    # # QQ Plot
-    # plt.subplot(1, 2, 2)
-    # sm.qqplot(residuals, line='45', fit=True)
-    # plt.title('QQ Plot of Residuals')
-
-    # plt.savefig(os.path.join(save_path, 'diagnostic_plots_ols.png'))
-    # plt.close()
-    
+   
     # Create diagnostic plots
     diagnostic = LinearRegDiagnostic(model)
     diagnostic(plot_context='seaborn-v0_8-paper')
@@ -110,7 +92,46 @@ def scatter_plot_ols(y_test, test_predictions, path):
     plt.savefig(os.path.join(path, 'scatter_plot_ols.png'))
     plt.close()
 
-
+def save_diagnostic_plots(model, X_test, y_test, save_path):
+    X = sm.add_constant(X_test)
+    predictions = model.predict(X)
+    residuals = y_test - predictions
+    
+    plt.figure(figsize=(12, 10))
+    
+    # Residuals vs Fitted
+    plt.subplot(2, 2, 1)
+    plt.scatter(predictions, residuals, alpha=0.6)
+    plt.axhline(y=0, color='r', linestyle='--')
+    plt.xlabel('Fitted values')
+    plt.ylabel('Residuals')
+    plt.title('Residuals vs Fitted')
+    
+    # Q-Q Plot
+    plt.subplot(2, 2, 2)
+    stats.probplot(residuals, dist="norm", plot=plt)
+    plt.title('Standardized Residual vs Theoretical Quantile')
+    
+    # Scale-Location Plot
+    plt.subplot(2, 2, 3)
+    plt.scatter(predictions, np.sqrt(np.abs(residuals)), alpha=0.6)
+    plt.axhline(y=0, color='r', linestyle='--')
+    plt.xlabel('Fitted values')
+    plt.ylabel('Sqrt(Standardized Residuals)')
+    plt.title('Scale-Location Plot')
+    
+    # Residuals vs Leverage
+    plt.subplot(2, 2, 4)
+    leverage = (X_test - X_test.mean()) / X_test.std()
+    plt.scatter(leverage.sum(axis=1), residuals, alpha=0.6)
+    plt.axhline(y=0, color='r', linestyle='--')
+    plt.xlabel('Leverage')
+    plt.ylabel('Residuals')
+    plt.title('Residuals vs Leverage')
+    
+    plt.tight_layout()
+    plt.savefig(os.path.join(save_path, 'diagnostic_plots_ols.png'))
+    plt.close()
 
 
 def main():
@@ -141,8 +162,9 @@ def main():
         f.write(f"Validation Data R²: {test_r2:.4f}\n")
 
     # Generate and Save Diagnostic and Scatter Plots
-    diagnostic_plots_ols(ols_model, output_dir)
+    # diagnostic_plots_ols(ols_model, output_dir)
     scatter_plot_ols(y_test, test_predictions, output_dir)
+    save_diagnostic_plots(ols_model, X_test, y_test, output_dir)
 
     ols_model.save(os.path.join(output_dir, 'ols_model.h5'))
     print(f"OLS Model and metrics saved in '{output_dir}'.")
