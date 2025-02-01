@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  knowledge_base:
+    #build: .
+    image: zobia063/knowledgebase_bankcustomerchurnprediction
+    volumes:
+      - ai_system:/tmp
+
+volumes:
+  ai_system:
+    external: true
