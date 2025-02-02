@@ -7,10 +7,11 @@ def predict():
     # Drop the 'exited' column if it exists
     if 'Exited' in data.columns:
         data = data.drop(columns=['Exited'])
-    print(data.info())   
+    #print(data.info())   
     # Load the model
     model = load_model('../../learningBase/ann_model.h5')
-    
+    # indicate successful loading by CLI output
+    print("...solution has been loaded successfully!")
     # Make predictions
     predictions = model.predict(data)
         # Convert probability to binary (0 or 1) using a threshold of 0.5
@@ -20,4 +21,4 @@ def predict():
 
 if __name__ == "__main__":
     predictions = predict()
-    print(predictions)
+    print("Prediction: ",predictions[0,0])
