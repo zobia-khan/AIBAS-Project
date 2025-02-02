@@ -166,7 +166,7 @@ def main():
     scatter_plot_ols(y_test, test_predictions, output_dir)
     save_diagnostic_plots(ols_model, X_test, y_test, output_dir)
 
-    ols_model.save(os.path.join(output_dir, 'ols_model.h5'))
+    ols_model.save(os.path.join(output_dir, 'ols_model.pkl'))
     print(f"OLS Model and metrics saved in '{output_dir}'.")
 
 if __name__ == "__main__":

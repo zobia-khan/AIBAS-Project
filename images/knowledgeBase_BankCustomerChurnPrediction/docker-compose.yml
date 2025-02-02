@@ -3,7 +3,7 @@ version: '3.9'
 services:
   knowledge_base:
     #build: .
-    image: zobia063/knowledgebase_bankcustomerchurnprediction
+    image: uafridi/knowledgebase_bankcustomerchurnprediction
     volumes:
       - ai_system:/tmp
 

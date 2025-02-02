@@ -28,5 +28,5 @@ COPY ../../code/olsRequests /tmp/codeBase/
 COPY images/codeBase_BankCustomerChurnPrediction_ols/Readme.md /tmp/codeBase/
 
 # Set working directory
-WORKDIR /tmp/codeBase/
+# WORKDIR /tmp/codeBase/
 
