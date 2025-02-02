@@ -13,16 +13,8 @@ This repo is created as part of the course **"M. Grum: Advanced AI-based Applica
 
 ---
 
-## Origin of Scraped data
+## Short Characterization of OLS model
 
----
-
-## Getting Started
-
-1. Set up operating system
-2. Set up docker
-3. Set up tensorflow
-4. Install relevant content manually
 
 ---
 

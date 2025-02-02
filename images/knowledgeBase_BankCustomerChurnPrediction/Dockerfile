@@ -1,7 +1,7 @@
 # Dockerfile for knowledgeBase
 FROM busybox
 
-# Copy activation data into the image
+# Copy models into the image
 COPY ../../learningBase/ann_model.h5 /tmp/knowledgeBase/currentAiSolution.h5
 COPY ../../learningBaseOLS/ols_model.h5 /tmp/knowledgeBase/currentOlsSolution.h5
 
