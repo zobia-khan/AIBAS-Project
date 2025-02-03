@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  knowledge_base_testSender:
+    image: uafridi/knowledgebase_bankcustomerchurnprediction
+    volumes:
+       - ai_system:/tmp
+   
+   
+  activation_base_testSender:
+    image: uafridi/activationbase_bankcustomerchurnprediction
+    volumes:
+       - ai_system:/tmp
+    
+    
+  code_base_testSender:
+    image: uafridi/codebase_bankcustomerchurnprediction_ann
+    volumes:
+       - ai_system:/tmp
+    depends_on:
+      - "knowledge_base_testSender"
+      - "activation_base_testSender"
+    command: ["python3.11", "apply_olsSolution.py"]
+   
+volumes:
+  ai_system:
+    external: true

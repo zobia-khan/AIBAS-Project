@@ -3,18 +3,15 @@
 
 ---
 
-## Ownership
-
----
-
 ## Overview
 
 This repo is created as part of the course **"M. Grum: Advanced AI-based Application Systems"** by the **"Junior Chair for Business InformaGon Science, esp. AI-based ApplicaGon Systems"** at **"University of Potsdam"**
 
 ---
 
-## Short Characterization of AI model
+## Ownership
 
+**Created by:** Unaiza Afridi & Zobia Khan
 
 ---
 

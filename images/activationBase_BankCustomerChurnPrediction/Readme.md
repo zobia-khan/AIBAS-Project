@@ -11,8 +11,7 @@ This repo is created as part of the course **"M. Grum: Advanced AI-based Applica
 
 ## Ownership
 
-**Created by:** Unaiza Afridi (uafridi)
-This image is owned and maintained by **Unaiza Afridi** and is part of the course *M. Grum: Advanced AI-based Application Systems* at the **University of Potsdam**.
+**Created by:** Unaiza Afridi & Zobia Khan
 
 ---
 
@@ -23,6 +22,8 @@ The dataset used in this project originates from **Kaggle**, available at:
 
 To streamline access and data preprocessing, the dataset was first **downloaded from Kaggle**, then **uploaded to a public github repository**, and later **scraped from there** for further processing.
 
+The data is scraped from "https://github.com/zobia-khan/AIBAS_Project_data"
+
 ---
 
 ## Commitment to License
@@ -30,9 +31,4 @@ To streamline access and data preprocessing, the dataset was first **downloaded 
 According to the course requirement, this project is licensed under **"AGPL-3.0 license"**
 
 ---
-
-## DockerHub Repository
-You can pull this image using:
-```bash
-docker pull uafridi/activationbase_bankcustomerchurnprediction
 
