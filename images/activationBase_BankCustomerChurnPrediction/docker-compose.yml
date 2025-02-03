@@ -6,6 +6,12 @@ services:
     image: uafridi/activationbase_bankcustomerchurnprediction
     volumes:
       - ai_system:/tmp
+    command:
+      - sh
+      - "-c"
+      - |
+       rm -rf /tmp/activationBase/ && mkdir -p /tmp/activationBase/ && cp -r /activationBase/ /tmp/;
+
 
 volumes:
   ai_system:

@@ -6,6 +6,11 @@ services:
     image: uafridi/knowledgebase_bankcustomerchurnprediction
     volumes:
       - ai_system:/tmp
+    command:
+      - sh
+      - "-c"
+      - |
+       rm -rf /tmp/knowledgeBase/ && mkdir -p /tmp/knowledgeBase/ && cp -r /knowledgeBase/ /tmp/;
 
 volumes:
   ai_system:

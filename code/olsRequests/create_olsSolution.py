@@ -13,7 +13,6 @@ import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, r2_score
-from UE_04_LinearRegDiagnostic import LinearRegDiagnostic
 import scipy.stats as stats
 
 def load_and_preprocess_data(train_file, test_file, target_column):
@@ -59,17 +58,6 @@ def evaluate_ols_model(model, X, y, data_type):
     print(f"  R²: {r2:.4f}")
 
     return predictions, rmse, r2
-
-def diagnostic_plots_ols(model, path):
-    """
-    Generate and save diagnostic plots (Residuals and QQ Plot).
-    """
-   
-    # Create diagnostic plots
-    diagnostic = LinearRegDiagnostic(model)
-    diagnostic(plot_context='seaborn-v0_8-paper')
-    plt.savefig(os.path.join(path, 'diagnostic_plots_ols.png'))
-    plt.close()
 
 def scatter_plot_ols(y_test, test_predictions, path):
     """
@@ -162,7 +150,6 @@ def main():
         f.write(f"Validation Data R²: {test_r2:.4f}\n")
 
     # Generate and Save Diagnostic and Scatter Plots
-    # diagnostic_plots_ols(ols_model, output_dir)
     scatter_plot_ols(y_test, test_predictions, output_dir)
     save_diagnostic_plots(ols_model, X_test, y_test, output_dir)
 

@@ -21,7 +21,7 @@ services:
       rm -rf /tmp/testSender/activationBase/ && mkdir -p /tmp/testSender/activationBase/ && cp -r /activationBase/ /tmp/testSender/;
     
   code_base_testSender:
-    image: uafridi/codebase_bankcustomerchurnprediction_ols
+    image: uafridi/codebase_bankcustomerchurnprediction_ann
     volumes:
        - ai_system:/tmp
     depends_on:
@@ -32,7 +32,7 @@ services:
     - "-c"
     - |
       rm -rf /tmp/testSender/codeBase/ && mkdir -p /tmp/testSender/codeBase/ && cp -r /codeBase/ /tmp/testSender/; 
-      python3.11 /tmp/testSender/codeBase/apply_olsSolution.py
+      python3.11 /tmp/testSender/codeBase/apply_annSolution.py
    
 volumes:
   ai_system:
