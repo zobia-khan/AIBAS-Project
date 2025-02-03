@@ -4,7 +4,9 @@ import statsmodels.api as sm
 
 def predict_ols():
     # Load the data
-    data = pd.read_csv('../../data/customer_churn_dataset/activation_data.csv')
+    # data = pd.read_csv('../../data/customer_churn_dataset/activation_data.csv')
+    data = pd.read_csv('/tmp/activationBase/activation_data.csv')
+
     
     # Drop the 'Exited' column if it exists
     if 'Exited' in data.columns:
@@ -13,7 +15,8 @@ def predict_ols():
     # print(data.info())
 
     # Load the trained OLS model
-    with open('../../learningBaseOLS/ols_model.pkl', 'rb') as file:
+    # with open('../../learningBaseOLS/ols_model.pkl', 'rb') as file:
+    with open('/tmp/knowledgeBase/currentOlsSolution.pkl', 'rb') as file:
         model = pickle.load(file)
 
     # Add a constant

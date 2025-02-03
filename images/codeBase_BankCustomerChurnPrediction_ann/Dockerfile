@@ -21,11 +21,11 @@ RUN pip install --no-cache-dir \
     statsmodels==0.14.4
 
 # Copy application code
-COPY ../../code/annRequests /tmp/codeBase/
+COPY ../../code/annRequests /codeBase/
 
 
 # Add the README file
-COPY images/codeBase_BankCustomerChurnPrediction_ann/Readme.md /tmp/codeBase/
+COPY images/codeBase_BankCustomerChurnPrediction_ann/Readme.md /codeBase/
 
 # Set working directory
-# WORKDIR /codeBase/
+WORKDIR /tmp/codeBase/
