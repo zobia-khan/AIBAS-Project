@@ -13,7 +13,7 @@ services:
     
     
   code_base_testSender:
-    image: uafridi/codebase_bankcustomerchurnprediction_ann
+    image: uafridi/codebase_bankcustomerchurnprediction_ols
     volumes:
        - ai_system:/tmp
     depends_on:

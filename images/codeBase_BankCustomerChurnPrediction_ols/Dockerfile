@@ -21,12 +21,13 @@ RUN pip install --no-cache-dir \
     scipy==1.12.0
 
 # Copy application code
-COPY ../../code/olsRequests /tmp/codeBase/
+COPY ../../code/olsRequests/apply_olsSolution.py /tmp/codeBase/
+COPY ../../code/olsRequests/create_olsSolution.py /tmp/codeBase/
 
 
 # Add the README file
 COPY images/codeBase_BankCustomerChurnPrediction_ols/Readme.md /tmp/codeBase/
 
 # Set working directory
-# WORKDIR /tmp/codeBase/
+WORKDIR /tmp/codeBase/
 
