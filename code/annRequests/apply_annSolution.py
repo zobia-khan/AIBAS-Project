@@ -23,6 +23,17 @@ def predict():
     
     return binary_predictions
 
+# if __name__ == "__main__":
+#     predictions = predict()
+#     print("Prediction: ",predictions[0,0])
+
 if __name__ == "__main__":
     predictions = predict()
-    print("Prediction: ",predictions[0,0])
+    result = "Customer Stayed" if predictions[0, 0] == 0 else "Customer Exited"
+    
+    print("=" * 40)
+    print("      Bank Customer Churn Prediction      ")
+    print("=" * 40)
+    print(f"Prediction: {predictions[0,0]} - {result}")
+    print("=" * 40)
+
