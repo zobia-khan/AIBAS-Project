@@ -1,7 +1,5 @@
 # Bank Customer Churn Prediction - AIBAS
 
----
-
 ## Overview
 
 This project is created as part of the course **"M. Grum: Advanced AI-based Application Systems"** by **"Prof. Dr.-Ing. Marcus Grum - Junior Chair for Business Information Science, esp. AI-based Application Systems"** at **"University of Potsdam"**
@@ -31,23 +29,50 @@ Contains docker-compose files that enable the application of the ann/ols model t
 
 ## Commands to run the project
 
-- to scrap and process the data: python3.11 code/data_scraping_and_prep/data_scraping.py
-data files will be saved to:
-data/customer_churn_dataset/joint_data_collection.csv
-data/customer_churn_dataset/training_data.csv
-data/customer_churn_dataset/test_data.csv
-data/customer_churn_dataset/activation_data.csv
-- to train ann model: python3.11 code/annRequests/create_annSolution.py
-- to train ols model: python3.11 code/olsRequests/create_olsSolution.py
+- to scrap and process the data: `python3.11 code/data_scraping_and_prep/data_scraping.py`
+
+    data files will be saved to:
+
+    data/customer_churn_dataset/joint_data_collection.csv
+
+    data/customer_churn_dataset/training_data.csv
+
+    data/customer_churn_dataset/test_data.csv
+
+    data/customer_churn_dataset/activation_data.csv
+
+- to train ann model: `python3.11 code/annRequests/create_annSolution.py`
+- to train ols model: `python3.11 code/olsRequests/create_olsSolution.py`
 
 ---
 
 ## Commands to run Dockerfile
 
 
-### **learning_base Docker Image**
-- **Build the container:**  
-  ```sh
-docker build -t <DOCKERNAME>/learningbase_bankcustomerchurnprediction -f images/learningBase_BankCustomerChurnPrediction/Dockerfile .
+### **learning_base Image**
+- **Build the image:** `docker build -t <DOCKERNAME>/learningbase_bankcustomerchurnprediction -f images/learningBase_BankCustomerChurnPrediction/Dockerfile .`
+- **Test the image:** `docker run --rm -it <DOCKERNAME>/knowledgebase_bankcustomerchurnprediction /bin/sh`
+- **Push the image:** `docker push <DOCKERNAME>/learningbase_bankcustomerchurnprediction`
+
+### **activation_base Image**
+- **Build the image:** `docker build -t <DOCKERNAME>/activationbase_bankcustomerchurnprediction -f images/activationBase_BankCustomerChurnPrediction/Dockerfile .`
+- **Test the image:** `docker run --rm -it <DOCKERNAME>/activationbase_bankcustomerchurnprediction /bin/sh`
+- **Push the image:** `docker push <DOCKERNAME>/activationbase_bankcustomerchurnprediction`
+
+### **knowledge_base Image**
+- **Build the image:** `docker build -t <DOCKERNAME>/knowledgebase_bankcustomerchurnprediction -f images/knowledgeBase_BankCustomerChurnPrediction/Dockerfile .`
+- **Test the image:** `docker run --rm -it <DOCKERNAME>/knowledgebase_bankcustomerchurnprediction /bin/sh`
+- **Push the image:** `docker push <DOCKERNAME>/knowledgebase_bankcustomerchurnprediction`
+
+### **code_base_ann Image**
+- **Build the image:** `docker build -t <DOCKERNAME>/codebase_bankcustomerchurnprediction_ann -f images/codeBase_BankCustomerChurnPrediction_ann/Dockerfile .`
+- **Test the image:** `docker run --rm -it <DOCKERNAME>/codebase_bankcustomerchurnprediction_ann /bin/sh`
+- **Push the image:** `docker push <DOCKERNAME>/codebase_bankcustomerchurnprediction_ann`
+
+### **code_base_ols Image**
+- **Build the image:** `docker build -t <DOCKERNAME>/codebase_bankcustomerchurnprediction_ols -f images/codeBase_BankCustomerChurnPrediction_ols/Dockerfile .`
+- **Test the image:** `docker run --rm -it <DOCKERNAME>/codebase_bankcustomerchurnprediction_ols /bin/sh`
+- **Push the image:** `docker push <DOCKERNAME>/codebase_bankcustomerchurnprediction_ols`
+`
 
 
