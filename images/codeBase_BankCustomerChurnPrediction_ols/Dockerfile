@@ -12,13 +12,13 @@ RUN ln -sf /usr/bin/python3.11 /usr/bin/python3 && \
 
 # Install required Python packages
 RUN pip install --no-cache-dir \
-    pandas==2.2.3 \
-    numpy==1.26.4\
-    scikit-learn==1.6.1 \
-    matplotlib==3.10.0 \
-    seaborn==0.13.2\
-    statsmodels==0.14.4\
-    scipy==1.12.0
+    pandas \
+    numpy\
+    scikit-learn\
+    matplotlib\
+    seaborn\
+    statsmodels\
+    scipy
 
 # Copy application code
 COPY ../../code/olsRequests /codeBase/

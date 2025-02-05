@@ -17,7 +17,7 @@ def predict_ols():
     # Load the trained OLS model
     # with open('../../learningBaseOLS/ols_model.pkl', 'rb') as file:
     with open('/tmp/knowledgeBase/currentOlsSolution.pkl', 'rb') as file:
-        model = pickle.load(file)
+        model = pickle.load(file, encoding="latin1")
 
     # Add a constant
     data = sm.add_constant(data, has_constant='add')
@@ -33,3 +33,10 @@ def predict_ols():
 if __name__ == "__main__":
     predictions = predict_ols()
     print("Prediction", predictions.values[0])
+    result = "Customer Stayed" if predictions.values[0] == 0 else "Customer Exited"
+    
+    print("=" * 40)
+    print("      Bank Customer Churn Prediction      ")
+    print("=" * 40)
+    print(f"Prediction: {predictions.values[0]} - {result}")
+    print("=" * 40)
